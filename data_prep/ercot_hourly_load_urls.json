@@ -1,4 +1,5 @@
 {
+    "recent": "http://mis.ercot.com/misapp/GetReports.do?reportTypeId=13101&reportTitle=Actual%20System%20Load%20by%20Weather%20Zone",
     "2021": "http://www.ercot.com/content/wcm/key_documents_lists/89022/Native_Load_2021.zip",
     "2020": "http://www.ercot.com/content/wcm/key_documents_lists/89022/Native_Load_2020.zip",
     "2019": "http://www.ercot.com/content/wcm/key_documents_lists/89022/Native_Load_2019.zip",
