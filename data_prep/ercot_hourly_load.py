@@ -61,13 +61,22 @@ def parse_ercot_hourly_load_archive(url_json: str, years: List[int]) -> pd.DataF
             raise RuntimeError("The file is not zip or xls.")
 
         df = pd.read_excel(os.path.join("./tmp_data/", excel_name))
-        df = df.set_index(df.columns[0])
-        # deal with time stamp of 24:00:00
-        if df.index.dtype == "O":
-            df.index = pd.DatetimeIndex(
-                [s[:11] + str(int(s[11:13]) - 1) + s[13:] for s in df.index]
+        datetime_col = df.columns[0]
+        if (
+            df[datetime_col].dtype == "O"
+        ):  # a small trick to deal with time stamp 24:00:00
+            df[datetime_col] = pd.to_datetime(
+                [s[:11] + str(int(s[11:13]) - 1) + s[13:] for s in df[datetime_col]]
             ) + pd.Timedelta("1H")
-        df.index = df.index.round(freq="S")
+        df[datetime_col] = df[datetime_col].round("S")
+        # a small trick to deal with daylight saving time
+        df.loc[df[datetime_col].duplicated(keep="last"), datetime_col] = df.loc[
+            df[datetime_col].duplicated(keep="last"), datetime_col
+        ] - pd.Timedelta("1H")
+        df = df.set_index(datetime_col)
+        df = df.tz_localize(
+            "US/Central", ambiguous="infer", nonexistent="shift_forward"
+        )
         index = index.append(df.index)
         values = np.vstack([values, df.values])
 
@@ -130,6 +139,7 @@ def parse_ercot_hourly_load_recent(url_json: str) -> pd.DataFrame:
             fwb.write(r.content)
         zipfile.ZipFile(local_path).extractall("./tmp_data/")
         date = zipfile.ZipFile(local_path).namelist()[0][30:38]
+        print(date)
         os.rename(
             os.path.join("./tmp_data/", zipfile.ZipFile(local_path).namelist()[0]),
             os.path.join("./tmp_data/", f"{date}.csv"),
@@ -137,6 +147,7 @@ def parse_ercot_hourly_load_recent(url_json: str) -> pd.DataFrame:
         os.remove(local_path)
         df = pd.read_csv(os.path.join("./tmp_data/", f"{date}.csv"))
 
+        # a small trick to handle time stamp 24:00
         df.index = pd.DatetimeIndex(
             df["OperDay"]
             + " "
@@ -144,6 +155,9 @@ def parse_ercot_hourly_load_recent(url_json: str) -> pd.DataFrame:
         ) + pd.Timedelta("1H")
 
         df.index = df.index.round(freq="S")
+        df = df.tz_localize(
+            "US/Central", ambiguous="infer", nonexistent="shift_forward"
+        )
         index = index.append(df.index)
         values = np.vstack([values, df.values[:, 2:11]])
 
