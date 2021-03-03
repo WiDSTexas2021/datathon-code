@@ -159,7 +159,7 @@ def parse_ercot_hourly_load_recent(url_json: str) -> pd.DataFrame:
             "US/Central", ambiguous="infer", nonexistent="shift_forward"
         )
         index = index.append(df.index)
-        values = np.vstack([values, df.values[:, 2:11]])
+        values = np.vstack([values, df.iloc[:, 2:11].values])
 
     hourly_load = pd.DataFrame(
         values,
@@ -181,11 +181,20 @@ def parse_ercot_hourly_load_recent(url_json: str) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    df = parse_ercot_hourly_load_archive(
+    archive = parse_ercot_hourly_load_archive(
         url_json="./ercot_hourly_load_urls.json",
         years=list(range(2005, 2022)),
     )
-    df.to_csv("./tmp_data/archive.csv")
+    archive.to_csv("./tmp_data/archive.csv")
 
-    df = parse_ercot_hourly_load_recent(url_json="./ercot_hourly_load_urls.json")
-    df.to_csv("./tmp_data/recent.csv")
+    recent = parse_ercot_hourly_load_recent(url_json="./ercot_hourly_load_urls.json")
+    recent.to_csv("./tmp_data/recent.csv")
+
+    combined = (
+        archive.tz_convert("UTC")
+        .append(recent.tz_convert("UTC"))
+        .groupby(level=0)
+        .mean()
+    )
+    combined = combined.tz_convert("US/Central")
+    combined.to_csv("./tmp_data/combined.csv")
