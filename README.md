@@ -1,4 +1,5 @@
 # WiDS Texas 2021 Hackathon
+![update-ercot-hourly-load](https://github.com/WiDSTexas2021/hackathon/actions/workflows/update-ercot-hourly-load.yml/badge.svg)
 
 This repository includes scripts for preparing WiDS Texas 2021 Hackathon.
 
