@@ -1,4 +1,4 @@
-name: update-ercot-hourly-load
+name: ERCOT
 on:
   schedule:
     - cron: "* */1 * * *"
