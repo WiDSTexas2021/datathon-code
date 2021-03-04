@@ -19,7 +19,7 @@ jobs:
           python -m pip install -r requirements.txt
       - name: execute script
         run: |
-          cd ./script/data_prep
+          cd ./scripts/data_prep
           python ercot_hourly_load.py
       - name: commit updated data
         run: |
