@@ -2,6 +2,7 @@ name: update-ercot-hourly-load
 on:
   schedule:
     - cron: "*/1 * * * *"
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
