@@ -23,6 +23,7 @@ jobs:
           python ercot_hourly_load.py
       - name: commit updated data
         run: |
+          cd ./data_prep
           mkdir data
           mv ./tmp_data/combined.csv ./data/ercot_hourly_load.csv
           git config user.name github-actions
