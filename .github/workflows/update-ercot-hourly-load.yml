@@ -29,5 +29,5 @@ jobs:
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add ./data
-          if [[ -z  $(git status -uno --porcelain) ]]; then git commit -m "updated"; fi
+          if [[ ! -z  $(git status -uno --porcelain) ]]; then git commit -m "updated"; fi
           git push
