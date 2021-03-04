@@ -82,7 +82,7 @@ def parse_ercot_hourly_load_archive(url_json: str, years: List[int]) -> pd.DataF
 
     hourly_load = pd.DataFrame(
         values,
-        index=index,
+        index=index.rename("Hour_Ending"),
         columns=[
             "Coast",
             "East",
@@ -163,7 +163,7 @@ def parse_ercot_hourly_load_recent(url_json: str) -> pd.DataFrame:
 
     hourly_load = pd.DataFrame(
         values,
-        index=index,
+        index=index.rename("Hour_Ending"),
         columns=[
             "Coast",
             "East",
