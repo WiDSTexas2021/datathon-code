@@ -46,6 +46,9 @@ def parse_texas_covid_19_data(
     df.index = pd.to_datetime(df.index)
     df.columns = df.columns.rename(None)
 
+    if not os.path.exists("./tmp_data/"):
+        os.mkdir("./tmp_data/")
+
     local_path = os.path.join("./tmp_data/", f"texas_covid_{data_type}.csv")
     df.to_csv(local_path)
 
