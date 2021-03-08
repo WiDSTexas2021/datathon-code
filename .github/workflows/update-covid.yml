@@ -1,4 +1,4 @@
-name: ERCOT
+name: COVID-19
 on:
   schedule:
     - cron: "0 * * * *"
@@ -20,12 +20,13 @@ jobs:
       - name: execute script
         run: |
           cd ./scripts/data_prep
-          python ercot_hourly_load.py
+          python covid.py
       - name: commit updated data
         run: |
-          mv ./scripts/data_prep/tmp_data/combined.csv ./data/ercot_hourly_load.csv
+          mv ./scripts/data_prep/tmp_data/texas_covid_confirmed.csv ./data/texas_covid_confirmed.csv
+          mv ./scripts/data_prep/tmp_data/texas_covid_confirmed.csv ./data/texas_covid_deaths.csv
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add ./data
-          if [[ ! -z  $(git status -uno --porcelain) ]]; then git commit -m "updated ercot"; fi
+          if [[ ! -z  $(git status -uno --porcelain) ]]; then git commit -m "updated covid"; fi
           git push
