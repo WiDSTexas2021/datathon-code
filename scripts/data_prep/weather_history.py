@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 API_BASE_URL = "https://api.worldweatheronline.com/premium/v1/past-weather.ashx"
 
 load_dotenv()
-API_KEY = os.getenv("WORLDWEATHERONLINE_API_KEY")
+API_KEY = os.getenv("WEATHER_API_KEY")
 
 
 def update_weather_history(csv: str, cities: List[str], years: List[int]) -> None:
