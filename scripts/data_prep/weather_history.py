@@ -96,6 +96,7 @@ def update_weather_history(csv: str, cities: List[str], years: List[int]) -> Non
                                 }
                             )
                             df = df.append(hour_data, ignore_index=True)
+                    df = df.sort_values(by=["date", "time", "city"])
                     df.to_csv(csv, index=False)
                 else:
                     print(r.status_code)
