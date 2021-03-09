@@ -124,6 +124,8 @@ def update_weather_history(
                 else:
                     print(r.status_code)
                     print(r.content)
+                    if r.status_code == 429:
+                        return
                 if (max_calls is not None) and (n_calls >= max_calls):
                     return
 
