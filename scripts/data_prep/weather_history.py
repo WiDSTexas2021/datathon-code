@@ -1,7 +1,7 @@
 import datetime
 import os
 import xml.etree.ElementTree as ET
-from typing import List
+from typing import List, Optional
 
 import pandas as pd
 import requests
@@ -13,7 +13,9 @@ load_dotenv()
 API_KEY = os.getenv("WEATHER_API_KEY")
 
 
-def update_weather_history(csv: str, cities: List[str], years: List[int]) -> None:
+def update_weather_history(
+    csv: str, cities: List[str], years: List[int], max_calls: Optional[int] = None
+) -> None:
     """Update weather history data of Texas cities.
 
     Weather history query uses API of worldweatheronline.com. It queries past weather
@@ -28,6 +30,8 @@ def update_weather_history(csv: str, cities: List[str], years: List[int]) -> Non
         List of cities in Texas.
     years : List[int]
         List of years of data to query. The earliest available data is July 2008.
+    max_calls : Optional[int], optional
+        Maximal number of API calls, by default None, i.e. no limit.
 
     """
 
@@ -68,6 +72,7 @@ def update_weather_history(csv: str, cities: List[str], years: List[int]) -> Non
                 "uvIndex",
             ]
         )
+    n_calls = 0
     for year in years:
         for month in range(12, 0, -1):
             if datetime.datetime.now() < datetime.datetime(year, month, 1):
@@ -96,6 +101,7 @@ def update_weather_history(csv: str, cities: List[str], years: List[int]) -> Non
                     f"&date={start_date_str}&enddate={end_date_str}"
                 )
                 r = requests.get(url)
+                n_calls += 1
                 if r.status_code == 200:
                     tree = ET.fromstring(r.content.decode())
                     for day in tree.findall("weather"):
@@ -118,6 +124,8 @@ def update_weather_history(csv: str, cities: List[str], years: List[int]) -> Non
                 else:
                     print(r.status_code)
                     print(r.content)
+                if (max_calls is not None) and (n_calls >= max_calls):
+                    return
 
 
 if __name__ == "__main__":
@@ -137,4 +145,5 @@ if __name__ == "__main__":
         csv="../../data/weather_history.csv",
         cities=cities,
         years=list(range(2021, 2007, -1)),
+        max_calls=100,
     )
