@@ -5,3 +5,4 @@ requests>=2.20
 openpyxl>=3
 xlrd>=2
 beautifulsoup4>=4.8
+python-dotenv>=0.14
