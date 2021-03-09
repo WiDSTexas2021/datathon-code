@@ -71,6 +71,7 @@ def update_weather_history(csv: str, cities: List[str], years: List[int]) -> Non
             for city in cities:
                 print(f"{start_date_str} - {end_date_str} - {city}")
                 if ((df["city"] == city) & (df["date"] == start_date_str)).any():
+                    print("skip")
                     continue  # skip city/month queried before
                 url = (
                     f"{API_BASE_URL}?key={API_KEY}"
@@ -96,6 +97,9 @@ def update_weather_history(csv: str, cities: List[str], years: List[int]) -> Non
                             )
                             df = df.append(hour_data, ignore_index=True)
                     df.to_csv(csv, index=False)
+                else:
+                    print(r.status_code)
+                    print(r.content)
 
 
 if __name__ == "__main__":
