@@ -107,17 +107,17 @@ if __name__ == "__main__":
     cities = [
         "Houston",
         "Austin",
-        # "San Antonio",
-        # "Dallas",
-        # "Corpus Christi",
-        # "Brownsville",
-        # "Abilene",
-        # "Wichita Falls",
-        # "Midland",
-        # "Tyler",
+        "San Antonio",
+        "Dallas",
+        "Corpus Christi",
+        "Brownsville",
+        "Abilene",
+        "Wichita Falls",
+        "Midland",
+        "Tyler",
     ]
     update_weather_history(
         csv="../../data/weather_history.csv",
         cities=cities,
-        years=list(range(2021, 2019, -1)),
+        years=list(range(2021, 2007, -1)),
     )
