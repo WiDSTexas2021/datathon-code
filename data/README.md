@@ -13,3 +13,6 @@
 - [`texas_covid_confirmed.csv`](./texas_covid_confirmed.csv) includes cumulative confirmed COVID-19 cases in Texas by county. The data is updated in [JHU COVID-19 data repository](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) in a daily basis.
 
 - [`texas_covid_deaths.csv`](./texas_covid_confirmed.csv) includes cumulative COVID-19 deaths count in Texas by county. The data is updated in [JHU COVID-19 data repository](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) in a daily basis.
+
+## Weather History
+- [`weather_history.csv`](./weather_history.csv) includes past weather data of 10 cities cross the 8 ECROT weather zones. The data is from [World Weather Online](https://www.worldweatheronline.com) and reported every 3 hours starting from July 1, 2008.
