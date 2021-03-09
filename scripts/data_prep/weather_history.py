@@ -14,6 +14,23 @@ API_KEY = os.getenv("WEATHER_API_KEY")
 
 
 def update_weather_history(csv: str, cities: List[str], years: List[int]) -> None:
+    """Update weather history data of Texas cities.
+
+    Weather history query uses API of worldweatheronline.com. It queries past weather
+    of cities month by month following the list of years. Due to limit of API calls, a
+    single call of the function may not obtained all data requested.
+
+    Parameters
+    ----------
+    csv : str
+        Local path of the CSV file that stores past weather data.
+    cities : List[str]
+        List of cities in Texas.
+    years : List[int]
+        List of years of data to query. The earliest available data is July 2008.
+
+    """
+
     if os.path.exists(csv):
         df = pd.read_csv(csv)
     else:
