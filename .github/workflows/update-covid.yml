@@ -27,6 +27,7 @@ jobs:
           mv ./scripts/data_prep/tmp_data/texas_covid_deaths.csv ./data/texas_covid_deaths.csv
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git pull
           git add ./data
           if [[ ! -z  $(git status -uno --porcelain) ]]; then git commit -m "updated covid"; fi
           git push
