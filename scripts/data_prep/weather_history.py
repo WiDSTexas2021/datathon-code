@@ -34,44 +34,42 @@ def update_weather_history(
         Maximal number of API calls, by default None, i.e. no limit.
 
     """
-
+    column_to_dtype = {
+        "date": str,
+        "time": int,
+        "city": str,
+        "tempC": int,
+        "tempF": int,
+        "windspeedMiles": int,
+        "windspeedKmph": int,
+        "winddirDegree": int,
+        "winddir16Point": str,
+        "weatherCode": int,
+        "weatherDesc": str,
+        "precipMM": float,
+        "precipInches": float,
+        "humidity": int,
+        "visibility": int,
+        "visibilityMiles": int,
+        "pressure": int,
+        "pressureInches": int,
+        "cloudcover": int,
+        "HeatIndexC": int,
+        "HeatIndexF": int,
+        "DewPointC": int,
+        "DewPointF": int,
+        "WindChillC": int,
+        "WindChillF": int,
+        "WindGustMiles": int,
+        "WindGustKmph": int,
+        "FeelsLikeC": int,
+        "FeelsLikeF": int,
+        "uvIndex": int,
+    }
     if os.path.exists(csv):
         df = pd.read_csv(csv)
     else:
-        df = pd.DataFrame(
-            columns=[
-                "date",
-                "time",
-                "city",
-                "tempC",
-                "tempF",
-                "windspeedMiles",
-                "windspeedKmph",
-                "winddirDegree",
-                "winddir16Point",
-                "weatherCode",
-                "weatherDesc",
-                "precipMM",
-                "precipInches",
-                "humidity",
-                "visibility",
-                "visibilityMiles",
-                "pressure",
-                "pressureInches",
-                "cloudcover",
-                "HeatIndexC",
-                "HeatIndexF",
-                "DewPointC",
-                "DewPointF",
-                "WindChillC",
-                "WindChillF",
-                "WindGustMiles",
-                "WindGustKmph",
-                "FeelsLikeC",
-                "FeelsLikeF",
-                "uvIndex",
-            ]
-        )
+        df = pd.DataFrame(columns=list(column_to_dtype.keys()))
     n_calls = 0
     for year in years:
         for month in range(12, 0, -1):
@@ -92,7 +90,9 @@ def update_weather_history(
                 ).strftime("%Y-%m-%d")
             for city in cities:
                 print(f"{start_date_str} - {end_date_str} - {city}")
-                if ((df["city"] == city) & (df["date"] == start_date_str)).any():
+                if ((df["city"] == city) & (df["date"] == start_date_str)).any() and (
+                    (df["city"] == city) & (df["date"] == end_date_str)
+                ).any():
                     print("skip")
                     continue  # skip city/month queried before
                 url = (
@@ -105,12 +105,12 @@ def update_weather_history(
                 if r.status_code == 200:
                     tree = ET.fromstring(r.content.decode())
                     for day in tree.findall("weather"):
+                        date = day.find("date")
+                        if date is not None:
+                            hour_data = {"date": date.text, "city": city}
+                        else:
+                            raise RuntimeError("No valid date is found.")
                         for hour in day.findall("hourly"):
-                            date = day.find("date")
-                            if date is not None:
-                                hour_data = {"date": date.text, "city": city}
-                            else:
-                                raise RuntimeError("No valid date is found.")
                             hour_data.update(
                                 {
                                     key.tag: key.text
@@ -119,6 +119,8 @@ def update_weather_history(
                                 }
                             )
                             df = df.append(hour_data, ignore_index=True)
+                    df = df.astype(column_to_dtype)
+                    df = df.loc[~df.duplicated(["date", "time", "city"]), :]
                     df = df.sort_values(by=["date", "time", "city"])
                     df.to_csv(csv, index=False)
                 else:
@@ -146,6 +148,6 @@ if __name__ == "__main__":
     update_weather_history(
         csv="../../data/weather_history.csv",
         cities=cities,
-        years=list(range(2021, 2007, -1)),
+        years=list(range(2021, 2020, -1)),
         max_calls=100,
     )
