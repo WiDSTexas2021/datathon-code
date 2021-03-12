@@ -81,7 +81,7 @@ def parse_ercot_hourly_load_archive(url_json: str, years: List[int]) -> pd.DataF
         values = np.vstack([values, df.values])
 
     hourly_load = pd.DataFrame(
-        values,
+        values[:, :-1],
         index=index.rename("Hour_Ending"),
         columns=[
             "Coast",
@@ -92,7 +92,6 @@ def parse_ercot_hourly_load_archive(url_json: str, years: List[int]) -> pd.DataF
             "South",
             "South Central",
             "West",
-            "ERCOT",
         ],
     )
     hourly_load = hourly_load.sort_index()
@@ -162,7 +161,7 @@ def parse_ercot_hourly_load_recent(url_json: str) -> pd.DataFrame:
         values = np.vstack([values, df.iloc[:, 2:11].values])
 
     hourly_load = pd.DataFrame(
-        values,
+        values[:, :-1],
         index=index.rename("Hour_Ending"),
         columns=[
             "Coast",
@@ -173,7 +172,6 @@ def parse_ercot_hourly_load_recent(url_json: str) -> pd.DataFrame:
             "South",
             "South Central",
             "West",
-            "ERCOT",
         ],
     )
     hourly_load = hourly_load.sort_index()
