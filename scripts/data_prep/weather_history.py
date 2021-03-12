@@ -73,17 +73,14 @@ def update_weather_history(
     n_calls = 0
     for year in years:
         for month in range(12, 0, -1):
-            if datetime.datetime.now() < datetime.datetime(year, month, 1):
+            yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
+            if yesterday < datetime.datetime(year, month, 1):
                 continue  # skip future month
             if datetime.datetime(year, month, 1) < datetime.datetime(2008, 7, 1):
                 continue  # earliest date the API supports
             start_date_str = datetime.datetime(year, month, 1).strftime("%Y-%m-%d")
-            if datetime.datetime.now() < datetime.datetime(
-                year, month, 1
-            ) + datetime.timedelta(30):
-                end_date_str = datetime.datetime.now().strftime(
-                    "%Y-%m-%d"
-                )  # query up to today
+            if yesterday < datetime.datetime(year, month, 1) + datetime.timedelta(30):
+                end_date_str = yesterday.strftime("%Y-%m-%d")  # query up to yesterday
             else:
                 end_date_str = (
                     datetime.datetime(year, month, 1) + datetime.timedelta(30)
