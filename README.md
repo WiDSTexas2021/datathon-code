@@ -2,7 +2,7 @@
 Data Update Status:
 ![ERCOT](https://github.com/WiDSTexas2021/hackathon/actions/workflows/update-ercot-hourly-load.yml/badge.svg)
 ![COVID-19](https://github.com/WiDSTexas2021/hackathon/actions/workflows/update-covid.yml/badge.svg)
-![Weather History](https://github.com/WiDSTexas2021/hackathon/actions/workflows/update-past-weather.yml/badge.svg)
+![Weather](https://github.com/WiDSTexas2021/hackathon/actions/workflows/update-weather.yml/badge.svg)
 
 This repository includes scripts for preparing WiDS Texas 2021 Hackathon.
 
