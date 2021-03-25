@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 from typing import List, Optional
 
 import pandas as pd
+import pytz
 import requests
 from dotenv import load_dotenv
 
@@ -71,19 +72,23 @@ def update_weather_history(
     else:
         df = pd.DataFrame(columns=list(column_to_dtype.keys()))
     n_calls = 0
+    tz = pytz.timezone("US/Central")
     for year in years:
         for month in range(12, 0, -1):
-            yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
-            if yesterday < datetime.datetime(year, month, 1):
+            yesterday = datetime.datetime.now(tz=tz) - datetime.timedelta(days=1)
+            if yesterday < tz.localize(datetime.datetime(year, month, 1)):
                 continue  # skip future month
             if datetime.datetime(year, month, 1) < datetime.datetime(2008, 7, 1):
                 continue  # earliest date the API supports
             start_date_str = datetime.datetime(year, month, 1).strftime("%Y-%m-%d")
-            if yesterday < datetime.datetime(year, month, 1) + datetime.timedelta(30):
+            if yesterday < tz.localize(
+                datetime.datetime(year, month, 1)
+            ) + datetime.timedelta(30):
                 end_date_str = yesterday.strftime("%Y-%m-%d")  # query up to yesterday
             else:
                 end_date_str = (
-                    datetime.datetime(year, month, 1) + datetime.timedelta(30)
+                    tz.localize(datetime.datetime(year, month, 1))
+                    + datetime.timedelta(30)
                 ).strftime("%Y-%m-%d")
             for city in cities:
                 print(f"{start_date_str} - {end_date_str} - {city}")

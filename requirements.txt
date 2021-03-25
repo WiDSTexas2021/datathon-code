@@ -4,5 +4,6 @@ matplotlib>=3.1
 requests>=2.20
 openpyxl>=3
 xlrd>=2
+pytz>=2019
 beautifulsoup4>=4.8
 python-dotenv>=0.14
