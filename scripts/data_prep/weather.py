@@ -102,6 +102,8 @@ def update_weather_forecast(csv: str, cities: List[str]) -> None:
             print(r.content)
             if r.status_code == 429:
                 return
+            if r.status_code == 401:
+                raise ConnectionRefusedError("Inactive API key.")
 
 
 def update_weather_history(
