@@ -18,9 +18,9 @@ This data repository is NOT the minimal dataset that participants must use OR th
 
 ![Weather](https://github.com/WiDSTexas2021/hackathon/actions/workflows/update-weather.yml/badge.svg)
 
-- `weather_history.csv` includes past weather data of 10 cities cross the 8 ECROT [weather zones](./ercotWeatherZoneMap.png). The data is from [World Weather Online](https://www.worldweatheronline.com) and reported every 3 hours starting from July 1, 2008.
+- `weather_history.csv` includes past weather data of 10 cities cross the 8 ECROT [weather zones](./ercotWeatherZoneMap.png). The data is from [World Weather Online](https://www.worldweatheronline.com) and reported every 3 hours starting from July 1, 2008. See [here](https://www.worldweatheronline.com/developer/api/docs/historical-weather-api.aspx#hourly) for details about each column.
 
-- `weather_forecast.csv` includes weather forecast of 10 cities cross the 8 ECROT [weather zones](./ercotWeatherZoneMap.png). The data is from [World Weather Online](https://www.worldweatheronline.com) and forecast every 3 hours in the next 13 days (including today).
+- `weather_forecast.csv` includes weather forecast of 10 cities cross the 8 ECROT [weather zones](./ercotWeatherZoneMap.png). The data is from [World Weather Online](https://www.worldweatheronline.com) and forecast every 3 hours in the next 13 days (including today). See [here](https://www.worldweatheronline.com/developer/api/docs/local-city-town-weather-api.aspx#hourly) for details about each column.
 
 ## COVID-19 Daily Data
 
