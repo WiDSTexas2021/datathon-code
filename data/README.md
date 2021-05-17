@@ -4,6 +4,15 @@ This data repository includes data for [WiDS Texas Datathon 2021](https://www.ka
 
 This data repository is NOT the minimal dataset that participants must use OR the maximal dataset that they could use. Participants should select the data based on their models. Participants are encouraged to use external public data if they believe it could improve their models.
 
+To download the data to your local, please clone the git repository.
+
+```bash
+git clone git@github.com:WiDSTexas2021/datathon-code.git
+cd datathon-code/data
+```
+
+To update your local data up to the state of the repository, please `git pull`.
+
 ## ERCOT Hourly Power Load
 
 ![ERCOT](https://github.com/WiDSTexas2021/hackathon/actions/workflows/update-ercot-hourly-load.yml/badge.svg)
