@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v2
+        with:
+            token: ${{ secrets.ADMIN_TOKEN }}
       - name: setup python
         uses: actions/setup-python@v2
         with:
@@ -25,8 +27,8 @@ jobs:
         run: |
           mv ./scripts/data_prep/tmp_data/texas_covid_confirmed.csv ./data/texas_covid_confirmed.csv
           mv ./scripts/data_prep/tmp_data/texas_covid_deaths.csv ./data/texas_covid_deaths.csv
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git config user.name tailaiw
+          git config user.email 29800495+tailaiw@users.noreply.github.com
           git pull
           git add ./data
           if [[ ! -z  $(git status -uno --porcelain) ]]; then git commit -m "updated covid"; fi
