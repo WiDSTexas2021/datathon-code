@@ -8,11 +8,11 @@ This data repository is NOT the minimal dataset that participants must use OR th
 
 ![ERCOT](https://github.com/WiDSTexas2021/hackathon/actions/workflows/update-ercot-hourly-load.yml/badge.svg)
 
-- `ercot_hourly_load.csv` includes hourly power load in the eight ERCTO [weather zones](./ercotWeatherZoneMap.png). The most recent few weeks of data is from [ERCOT Actual System Load](http://mis.ercot.com/misapp/GetReports.do?reportTypeId=13101&reportTitle=Actual%20System%20Load%20by%20Weather%20Zone), while earlier data is from [ERCOT Load Data Archives](http://www.ercot.com/gridinfo/load/load_hist). Note that all timestamps include time zone information (UTC offset, which depends on daylight saving time).
+- `ercot_hourly_load.csv` includes hourly power load in the eight ERCOT [weather zones](./ercotWeatherZoneMap.png). The most recent few weeks of data is from [ERCOT Actual System Load](http://mis.ercot.com/misapp/GetReports.do?reportTypeId=13101&reportTitle=Actual%20System%20Load%20by%20Weather%20Zone), while earlier data is from [ERCOT Load Data Archives](http://www.ercot.com/gridinfo/load/load_hist). Note that all timestamps include time zone information (UTC offset, which depends on daylight saving time).
 
-- `weather_zone_cities.json` lists all Texas cities in each ERCTO [weather zone](./ercotWeatherZoneMap.png). This could help to align power load data with city-wise data (e.g. weather data).
+- `weather_zone_cities.json` lists all Texas cities in each ERCOT [weather zone](./ercotWeatherZoneMap.png). This could help to align power load data with city-wise data (e.g. weather data).
 
-- `weather_zone_counties.json` lists all Texas counties in each ERCTO [weather zone](./ercotWeatherZoneMap.png). This could help to align power load data with county-wise data (e.g. COVID-19 data).
+- `weather_zone_counties.json` lists all Texas counties in each ERCOT [weather zone](./ercotWeatherZoneMap.png). This could help to align power load data with county-wise data (e.g. COVID-19 data).
 
 ## Weather
 
