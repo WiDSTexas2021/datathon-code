@@ -1,4 +1,4 @@
-# WiDS Texas 2021 Hackathon
+# WiDS Texas Datathon 2021
 
 Data Update Status:
 ![ERCOT](https://github.com/WiDSTexas2021/hackathon/actions/workflows/update-ercot-hourly-load.yml/badge.svg)
