@@ -195,4 +195,12 @@ if __name__ == "__main__":
         .mean()
     )
     combined = combined.tz_convert("US/Central")
-    combined.to_csv("./tmp_data/combined.csv")
+
+    previous = pd.read_csv("../../data/ercot_hourly_load.csv")
+    previous = previous.set_index("Hour_Ending")
+    previous.index = pd.to_datetime(previous.index, utc=True)
+    previous = previous.tz_convert("US/Central")
+
+    df = combined.join(previous, how="outer", rsuffix="_r").iloc[:, :8]
+    df.update(previous, overwrite=False)
+    df.to_csv("./tmp_data/combined.csv")
