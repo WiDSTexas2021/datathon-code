@@ -35,8 +35,7 @@ jobs:
           git checkout score
           git pull
           git add ./data
-          if [[ ! -z  $(git status -uno --porcelain) ]]; then git commit -m "updated ercot"; fi
-          git push
+          if [[ ! -z  $(git status -uno --porcelain) ]]; then git commit -m "updated ercot"; git push; fi
       - name: commit updated leaderboard
         run: |
           mv ./scripts/data_prep/tmp_data/combined.csv ./data/ercot_hourly_load.csv
@@ -45,5 +44,4 @@ jobs:
           git checkout score
           git pull
           git add ./leaderboard
-          if [[ ! -z  $(git status -uno --porcelain) ]]; then git commit -m "updated leaderboard"; fi
-          git push
+          if [[ ! -z  $(git status -uno --porcelain) ]]; then git commit -m "updated leaderboard"; git push; fi
