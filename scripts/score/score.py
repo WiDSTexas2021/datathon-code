@@ -71,4 +71,4 @@ for zone, ax in zip(ground_truth.columns, axes):
     if ax is axes[0]:
         ax.legend(loc="upper right", bbox_to_anchor=(1.25, 1.02))
 
-plt.savefig("../../leaderboard/comparison.png")
+plt.savefig("../../leaderboard/comparison.png", bbox_inches="tight")
