@@ -19,11 +19,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
-      - name: execute script
+      - name: execute ercot script
         run: |
           cd ./scripts/data_prep
           python ercot_hourly_load.py
-      - name: commit updated data
+      - name: execute leaderboard script
+        run: |
+          cd ./scripts/score
+          python score.py
+      - name: commit updated ercot data
         run: |
           mv ./scripts/data_prep/tmp_data/combined.csv ./data/ercot_hourly_load.csv
           git config user.name github-actions
@@ -31,4 +35,13 @@ jobs:
           git pull
           git add ./data
           if [[ ! -z  $(git status -uno --porcelain) ]]; then git commit -m "updated ercot"; fi
+          git push
+      - name: commit updated leaderboard
+        run: |
+          mv ./scripts/data_prep/tmp_data/combined.csv ./data/ercot_hourly_load.csv
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git pull
+          git add ./leaderboard
+          if [[ ! -z  $(git status -uno --porcelain) ]]; then git commit -m "updated leaderboard"; fi
           git push
