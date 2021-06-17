@@ -23,7 +23,7 @@ jobs:
         run: |
           cd ./scripts/data_prep
           python ercot_hourly_load.py
-          mv ./scripts/data_prep/tmp_data/combined.csv ./data/ercot_hourly_load.csv
+          mv ./tmp_data/combined.csv ../../data/ercot_hourly_load.csv
       - name: execute leaderboard script
         run: |
           cd ./scripts/score
