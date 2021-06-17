@@ -1,26 +1,26 @@
 |    | Team               |     RMSE |
 |---:|:-------------------|---------:|
-|  0 | stlf_draw_2021     |  492.617 |
-|  1 | Srichand Poludasu  |  590.956 |
-|  2 | Anshul Thapa       |  591.68  |
-|  3 | HoustonAI          |  596.991 |
-|  4 | Amanda Wright      |  787.084 |
-|  5 | DanceOfireflies    |  801.943 |
-|  6 | nvenergy           |  805.945 |
-|  7 | Electrathon        |  860.285 |
-|  8 | Quantum leap       |  882.553 |
-|  9 | Lets Try           |  882.911 |
-| 10 | T V Annapoorani    |  907.22  |
-| 11 | VivasEyrich        |  919.737 |
-| 12 | Ishita Chakraborty | 1079.61  |
-| 13 | Tejas              | 1353.14  |
-| 14 | Arash Sarabi       | 1542.82  |
-| 15 | Chetana14          | 1924.53  |
-| 16 | Ankita             | 1925.81  |
-| 17 | Pouya Shojaei      | 2108.33  |
-| 18 | Data Rhythms       | 2807.37  |
-| 19 | Team DS            | 2957.28  |
-| 20 | nvidia vig         | 3167.82  |
-| 21 | Sujata Maurya      | 3273.66  |
+|  0 | stlf_draw_2021     |  468.919 |
+|  1 | Anshul Thapa       |  560.386 |
+|  2 | HoustonAI          |  566.002 |
+|  3 | Srichand Poludasu  |  566.782 |
+|  4 | DanceOfireflies    |  748.504 |
+|  5 | Amanda Wright      |  776.191 |
+|  6 | nvenergy           |  782.947 |
+|  7 | Electrathon        |  805.835 |
+|  8 | Quantum leap       |  845.441 |
+|  9 | Lets Try           |  869.029 |
+| 10 | VivasEyrich        |  902.913 |
+| 11 | T V Annapoorani    |  972.222 |
+| 12 | Ishita Chakraborty | 1028.9   |
+| 13 | Tejas              | 1214.62  |
+| 14 | Arash Sarabi       | 1581.52  |
+| 15 | Ankita             | 1776.69  |
+| 16 | Chetana14          | 1963.67  |
+| 17 | Pouya Shojaei      | 2065.27  |
+| 18 | Data Rhythms       | 2688.61  |
+| 19 | Team DS            | 3007.3   |
+| 20 | Sujata Maurya      | 3213.23  |
+| 21 | nvidia vig         | 3291.52  |
 
-Leaderboard up to 2021-06-16 00:00:00-05:00. This is NOT the final ranking.
+Leaderboard up to 2021-06-17 00:00:00-05:00. This is NOT the final ranking.
