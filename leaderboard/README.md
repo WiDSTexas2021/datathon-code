@@ -1,26 +1,26 @@
 |    | Team               |     RMSE |
 |---:|:-------------------|---------:|
-|  0 | stlf_draw_2021     |  487.305 |
-|  1 | HoustonAI          |  541.459 |
-|  2 | Srichand Poludasu  |  589.025 |
-|  3 | Anshul Thapa       |  598.027 |
-|  4 | DanceOfireflies    |  721.853 |
-|  5 | Amanda Wright      |  751.976 |
-|  6 | Electrathon        |  760.3   |
-|  7 | nvenergy           |  831.933 |
-|  8 | Lets Try           |  849.154 |
-|  9 | Quantum leap       |  874.851 |
-| 10 | VivasEyrich        |  940.273 |
-| 11 | T V Annapoorani    |  964.272 |
-| 12 | Ishita Chakraborty | 1000.7   |
-| 13 | Tejas              | 1144.02  |
-| 14 | Arash Sarabi       | 1582.23  |
-| 15 | Ankita             | 1717.11  |
-| 16 | Chetana14          | 2050.59  |
-| 17 | Pouya Shojaei      | 2076.6   |
-| 18 | Data Rhythms       | 2695.47  |
-| 19 | Team DS            | 3040.41  |
-| 20 | Sujata Maurya      | 3149.26  |
-| 21 | nvidia vig         | 3346.03  |
+|  0 | stlf_draw_2021     |  519.67  |
+|  1 | HoustonAI          |  533.039 |
+|  2 | Anshul Thapa       |  604.032 |
+|  3 | Srichand Poludasu  |  609.22  |
+|  4 | DanceOfireflies    |  696.296 |
+|  5 | Electrathon        |  740.771 |
+|  6 | Amanda Wright      |  751.943 |
+|  7 | Lets Try           |  802.786 |
+|  8 | nvenergy           |  861.782 |
+|  9 | Quantum leap       |  866.022 |
+| 10 | Ishita Chakraborty |  962.796 |
+| 11 | VivasEyrich        |  970.68  |
+| 12 | T V Annapoorani    |  977.281 |
+| 13 | Tejas              | 1074.27  |
+| 14 | Arash Sarabi       | 1557.63  |
+| 15 | Ankita             | 1646.17  |
+| 16 | Pouya Shojaei      | 2041.43  |
+| 17 | Chetana14          | 2072.32  |
+| 18 | Data Rhythms       | 2664.11  |
+| 19 | Team DS            | 3047.73  |
+| 20 | Sujata Maurya      | 3088.63  |
+| 21 | nvidia vig         | 3328.01  |
 
-Leaderboard up to 2021-06-18 00:00:00-05:00. This is NOT the final ranking.
+Leaderboard up to 2021-06-19 00:00:00-05:00. This is NOT the final ranking.
